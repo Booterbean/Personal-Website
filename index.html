@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="index.css"/> 
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="p5.js"></script>
+    
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayedMath: [['$$', '$$']],
+        processEscapes: true
+        }
+    });
+    </script>
+    <script type="text/javascript">
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
+        function renderNewContent() {
+        var content = "This is some new content with math $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$";
+        document.getElementById("content").innerHTML += content;
+
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById("content")]);
+        }
+    </script>
+
+    <title>Corey Predella</title>
+</head>
+
+<body>
+
+    <div id="text-contents" class="text">
+        <p id="header"><span style="color:#F3E99F">Hello,</span> I'm Corey.</p>
+        <div id="links">
+            <a href="math.html" target="_blank">math</a>   <a href="music.html" target="_blank">music</a>   <a href="https://medium.com/@coreypredella" target="_blank">writing</a>
+        </div>
+        <div id="random-block">
+            
+        </div>
+    </div>
+    
+
+    
+
+    <div id="rotating-ball">
+    <script>
+            function setup() {
+            createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+            }
+
+            function draw() {
+            clear();noFill();stroke("#F7D060");
+            push();translate(-window.innerWidth/2.5,0);rotateY(sin(frameCount/200)*2);rotateX(cos(frameCount/200)*2);
+            ellipsoid(window.innerWidth/4, window.innerWidth/4, window.innerWidth/4, 6,6);pop()
+            }
+
+            function windowResized() {
+                resizeCanvas(windowWidth, windowHeight);
+            }
+    </script>
+    </div>
+
+    
+    
+    
+
+    
+</body>
+</html>

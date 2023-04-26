@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('cmu.serif-roman.ttf') format('truetype');
+}
+
+body {
+    background-color: #F3E99F;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+    height: 100%;
+    z-index: -1;
+}
+
+#text-contents {
+    position: absolute;
+}
+
+#handouts {
+    font-size: 2vh;
+    position: fixed;
+    left: 15%;
+    top: 10%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #F7D060;
+    border: 4px solid #FF6D60;
+    width:25vw;
+    margin: 5px;
+    color: #000000
+
+}
+
+#teaching {
+    font-size: 2vh;
+    position: fixed;
+    right: 15%;
+    top: 10%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #F7D060;
+    border: 4px solid #FF6D60;
+    width:25vw;
+    margin: 5px;
+    color: #000000
+}
+
+a {
+    
+    text-decoration:none;
+    }
+    
+    a:link {
+    color: rgb(82, 82, 255);
+    }
+    
+    
+    a:visited {
+    color: rgb(82, 82, 255);
+    }
+    
+    /* mouse over link */
+    a:hover {
+    color: hotpink;
+    }
+    
+    /* selected link */
+    a:active {
+    color: green;
+    }
+    
+.header {
+    font-size: 2vw;
+}

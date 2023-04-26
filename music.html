@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="music.css"/> 
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="p5.js"></script>
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayedMath: [['$$', '$$']],
+        processEscapes: true
+        }
+    });
+    </script>
+    <script type="text/javascript">
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
+        function renderNewContent() {
+        var content = "This is some new content with math $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$";
+        document.getElementById("content").innerHTML += content;
+
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById("content")]);
+        }
+    </script>
+
+    <title>Corey Predella</title>
+</head>
+
+<body>
+
+
+    <div id="text-contents" >
+        <div id="about">
+            <span class="header">About</span> <br>
+            I'm a guitarist of 13 years. I enjoy studying the styles of Ted Greene, Joe Pass, and Masayoshi Takanaka. 
+            You can view my work on my <a href="https://www.youtube.com/channel/UCppINvrBXsgCWsDBaYRJ3Zg" target="_blank">music channel</a>. My main ax is a Sweedish-made Strandberg Sälen Jazz NX. I am very comfortable with Abelton 11 and I take
+            my music-listening <a href="https://open.spotify.com/user/cubzzzzzzz/playlists" target="_blank">seriously</a>. Please reach out to coreypredella@gmail.com for gigs. Yes, I can read music.
+        </div>
+
+        <div id="routine"><span class="header">Practice Routine</span> <br>
+            <ul>
+                <li><a href="Hand Syncing.pdf" target="_blank">Syncing Hands</a></li>
+                <li><a href="Arpeggios.pdf" target="_blank">Arpeggio Variations</a></li>
+                <li><a href="Jazz Warmup.pdf" target="_blank">Jazz Fretboard</a></li>
+                <li><a href="Chord Variations.pdf" target="_blank">Triad + Tetrad Inversions</a></li>
+            </ul>
+        </div>
+
+        <div id="top-picks"><span class="header">Top Albums for 2023</span> <br> <br>
+            <img src="iwt222.jpeg" alt="IWT222"><br> 1. Intergalactic Warp Terminal 222 - Lionmilk<br><br>
+            <img src="bskies.jpeg" alt="Masayoshi Takanaka"><br> 2. Brasilian Skies - Masayoshi Takanaka<br> <br>
+            <img src="bd.jpg" alt="Database"><br> 3. Database - Daniel Hayn, Israel Strom, Noah Denton
+        </div>
+        
+    </div>
+
+    
+
+    <div id="rotating-ball">
+    <script>
+
+            function setup() {
+                createCanvas(window.innerWidth, window.innerHeight);
+
+            }
+
+            function draw() {
+                clear();noFill();
+                push();
+                for (var i=1;i<=500;i++){
+                    x = width/2+sin(cos(frameCount/500)+(i+frameCount/20)/20)*(width/2-50)
+                    y = height/2+tan(cos(frameCount/500)+i/30)*(height/2-50)
+                    noFill();stroke("#F3E99F");
+                    circle(y, x, window.innerWidth/5)
+                }pop()
+            }
+
+            function windowResized() {
+                resizeCanvas(windowWidth, windowHeight);
+            }
+
+    </script>
+    </div>
+
+    
+    
+    
+
+    
+</body>
+</html>
