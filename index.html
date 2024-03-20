@@ -58,20 +58,29 @@
     <center>
     <div id="rotating-ball">
         <script>
+            var pts = []
+            var details = []
+            var colorch = []
+
             function setup() {
-                var canvas = createCanvas(windowWidth / 1, windowHeight / 1, WEBGL); // Adjust the size as needed
-                canvas.parent('rotating-ball'); // Make the canvas a child of the div
+                createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+                for (var i=0;i<300;i++){
+                    pts.push([random(0,width), random(0-height/2, height/2)])
+                    details.push(random([3,4]))
+                    colorch.push(random(["#98D8AA", "#FF6D60"]))
+                }
             }
 
-function draw() {
-                clear();
-                noFill();
-                stroke("#F7D060");
-                rotateY(sin(frameCount / 500) * 2);
-                rotateX(cos(frameCount / 500) * 2);
-                ellipsoid(window.innerWidth/8, window.innerWidth/8, window.innerWidth/8, 6,6); // Adjust size relative to canvas
+            function draw() {
+          
+                clear();noFill();
+                for (var i=0;i<300;i++){
+                    stroke(colorch[i])
+                    push();translate((pts[i][0]+frameCount)%width-width/2-5,pts[i][1]);
+                    rotateY(sin(frameCount/200+i)*2);rotateX(cos(frameCount/200+i)*2);
+                    ellipsoid(15,15,15,details[i],details[i]);pop()
+                }
             }
-
 
             function windowResized() {
                 resizeCanvas(windowWidth, windowHeight);
