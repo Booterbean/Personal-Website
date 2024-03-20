@@ -76,7 +76,7 @@
                 clear();noFill();
                 for (var i=0;i<100;i++){
                     stroke(colorch[i])
-                    push();translate((pts[i][0]+frameCount)%width-width/2-5,pts[i][1]);
+                    push();translate((pts[i][0]+frameCount/5)%width-width/2-5,pts[i][1]);
                     rotateY(sin(frameCount/200+i)*2);rotateX(cos(frameCount/200+i)*2);
                     ellipsoid(15,15,15,details[i],details[i]);pop()
                 }
