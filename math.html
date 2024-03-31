@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Handouts</title>
+    <link rel="stylesheet" href="math.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <a href="http://coreypredella.com" class="back-arrow">&#x2190;</a>
+    <div class="container">
+        <div class="site-description">
+          <p>Welcome to my math page. Here is where I host some of my selected mathematical articles and handouts. If you are curious about my labeling conventions, please see my <a href="info.pdf">info document</a>. A lot of the articles have been adapted from course notes along with some articles about competition math. The rest of the articles below are from an ongoing project of mine called Abstractica. If you are curious about the ongoing narrative within some of these documents, stay tuned!</p>
+        </div>
+        <div class="handout">
+            <h2><a href="#handout1" class="handout-link">📎</a>The Joy of Polynomials</h2>
+            <p>(Coming Soon)</p>
+        </div>
+        <div class="handout">
+            <h2><a href="#handout1" class="handout-link">📎</a>Introduction to Proofs</h2>
+            <p>(Coming Soon)</p>
+        </div>
+        <div class="handout">
+            <h2><a href="#handout1" class="handout-link">📎</a>Taking the Soup</h2>
+            <p>(Coming Soon)</p>
+        </div>
+    </div>
+
+    <script>
+        let numCubes = 50;
+        let angle = 0;
+        let cubes = [];
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight, WEBGL);
+            for (let i = 0; i < numCubes; i++) {
+                let angle = (TWO_PI / numCubes) * i;
+                let radius = windowWidth / 3;
+                let x = radius * cos(angle);
+                let y = radius * sin(angle);
+                cubes.push(new Cube(x, y));
+            }
+        }
+
+        function draw() {
+            clear();
+            rotateZ(angle);
+            for (let i = 0; i < numCubes; i++) {
+                stroke(216, 163, 255);
+                cubes[i].display(i);
+                rotateZ(angle / 100);
+                rotateX(angle / 50);
+                noFill();
+            }
+            angle += 0.005;
+        }
+
+        class Cube {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            display(am) {
+                push();
+                translate(this.x, this.y, 0);
+                rotateX(frameCount/(10*am));
+                box(30);
+                pop();
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
+</body>
+</html>
