@@ -21,6 +21,15 @@ html, body {
   background-blend-mode: screen; 
 }
 
+/* Volume Control Icon */
+#volumeControl {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
 
 .content {
   position: relative;
@@ -149,7 +158,6 @@ html, body {
   0%   { opacity: 0; }
   100% { opacity: 1; }
 }
-
 
 .text-wipe {
   animation: wipeAway 6s cubic-bezier(.36,-0.21,.3,1) forwards;
