@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1500);
 
     fadeOverlay.addEventListener('animationend', () => {
-      window.location.href = "https://publish.obsidian.md/corey";
+      window.location.href = "https://publish.obsidian.md/corey/Website/Hi%2C+I'm+Corey!";
     }, { once: true });
   });
 });
