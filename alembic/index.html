@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deneb and Breshir Sound Sigils</title>
+
+  <style>
+    :root {
+      --symbol-size: 78px;
+      --center-size: 96px;
+      --glow: rgba(190, 160, 255, 0.72);
+      --gold: rgba(255, 222, 150, 0.88);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(175, 135, 255, 0.30), transparent 34%),
+        linear-gradient(145deg, #0b0716 0%, #120b24 50%, #0b0716 100%);
+      font-family: Georgia, "Times New Roman", serif;
+      color: #f7e8c6;
+    }
+
+    .sky {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .sky::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.88) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,220,170,0.65) 0 1px, transparent 1.4px);
+      background-size: 92px 92px, 137px 137px;
+      background-position: 0 0, 32px 54px;
+      opacity: 0.32;
+      animation: drift 38s linear infinite;
+    }
+
+    .sky::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 54vmin;
+      height: 54vmin;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 229, 180, 0.18);
+      box-shadow:
+        0 0 40px rgba(190, 160, 255, 0.18),
+        inset 0 0 60px rgba(255, 220, 160, 0.08);
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) rotate(0deg); }
+      to { transform: translate(50px, 30px) rotate(6deg); }
+    }
+
+    .thread {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: 140vmax;
+      height: 140vmax;
+      transform: translate(-50%, -50%) rotate(-18deg);
+      opacity: 0.18;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0 34px,
+          rgba(255, 230, 170, 0.18) 35px,
+          transparent 37px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0 48px,
+          rgba(190, 160, 255, 0.13) 49px,
+          transparent 51px
+        );
+      mask-image: radial-gradient(circle, black 0%, transparent 62%);
+    }
+
+    .symbol {
+      position: absolute;
+      width: var(--symbol-size);
+      height: var(--symbol-size);
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      filter:
+        drop-shadow(0 0 12px rgba(215, 196, 255, 0.52))
+        drop-shadow(0 0 28px rgba(255, 226, 170, 0.20));
+      transition:
+        transform 160ms ease,
+        filter 160ms ease,
+        opacity 160ms ease;
+    }
+
+    .symbol img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+
+    .symbol::after {
+      content: "";
+      position: absolute;
+      inset: -18px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(235, 220, 255, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .symbol:hover {
+      transform: translate(-50%, -50%) scale(1.13) rotate(2deg);
+      filter:
+        drop-shadow(0 0 13px var(--glow))
+        drop-shadow(0 0 26px rgba(255, 220, 160, 0.22));
+    }
+
+    .symbol:active {
+      transform: translate(-50%, -50%) scale(0.96);
+    }
+
+    .symbol.center {
+      left: 50%;
+      top: 50%;
+      width: var(--center-size);
+      height: var(--center-size);
+      z-index: 5;
+      filter:
+        drop-shadow(0 0 18px rgba(255, 236, 196, 0.78))
+        drop-shadow(0 0 44px rgba(195, 165, 255, 0.58));
+    }
+
+    .symbol.center::before {
+      content: "";
+      position: absolute;
+      inset: -28px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 226, 170, 0.28);
+      box-shadow: 0 0 35px rgba(200, 170, 255, 0.20);
+      animation: pulse 3.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.95); opacity: 0.48; }
+      50% { transform: scale(1.08); opacity: 0.9; }
+    }
+
+    @media (max-width: 700px) {
+      :root {
+        --symbol-size: 58px;
+        --center-size: 76px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sky"></div>
+  <div class="thread"></div>
+
+  <!--
+    Put this file in the same folder as:
+    U.png, 1.png, 2.png, ..., 8.png
+    U.wav, 1.wav, 2.wav, ..., 8.wav
+  -->
+
+  <button class="symbol center" data-sound="U.wav" aria-label="Play center sigil sound">
+    <img src="U.png" alt="Center sigil" />
+  </button>
+
+  <!-- Out-of-order placement. Change left/top percentages however you like. -->
+  <button class="symbol" style="left: 18%; top: 24%;" data-sound="5.wav" aria-label="Play sigil 5">
+    <img src="5.png" alt="Sigil 5" />
+  </button>
+
+  <button class="symbol" style="left: 77%; top: 18%;" data-sound="2.wav" aria-label="Play sigil 2">
+    <img src="2.png" alt="Sigil 2" />
+  </button>
+
+  <button class="symbol" style="left: 31%; top: 68%;" data-sound="8.wav" aria-label="Play sigil 8">
+    <img src="8.png" alt="Sigil 8" />
+  </button>
+
+  <button class="symbol" style="left: 69%; top: 76%;" data-sound="1.wav" aria-label="Play sigil 1">
+    <img src="1.png" alt="Sigil 1" />
+  </button>
+
+  <button class="symbol" style="left: 14%; top: 74%;" data-sound="6.wav" aria-label="Play sigil 6">
+    <img src="6.png" alt="Sigil 6" />
+  </button>
+
+  <button class="symbol" style="left: 86%; top: 54%;" data-sound="3.wav" aria-label="Play sigil 3">
+    <img src="3.png" alt="Sigil 3" />
+  </button>
+
+  <button class="symbol" style="left: 42%; top: 22%;" data-sound="7.wav" aria-label="Play sigil 7">
+    <img src="7.png" alt="Sigil 7" />
+  </button>
+
+  <button class="symbol" style="left: 58%; top: 33%;" data-sound="4.wav" aria-label="Play sigil 4">
+    <img src="4.png" alt="Sigil 4" />
+  </button>
+
+  <script>
+    const audioCache = {};
+
+    function playSound(filename) {
+      if (!audioCache[filename]) {
+        audioCache[filename] = new Audio(filename);
+      }
+
+      const sound = audioCache[filename];
+      sound.currentTime = 0;
+      sound.play().catch((error) => {
+        console.warn("Audio could not play:", filename, error);
+      });
+    }
+
+    document.querySelectorAll(".symbol").forEach((symbol) => {
+      symbol.addEventListener("click", () => {
+        playSound(symbol.dataset.sound);
+      });
+    });
+  </script>
+</body>
+</html>
